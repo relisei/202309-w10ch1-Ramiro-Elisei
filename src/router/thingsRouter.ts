@@ -4,6 +4,8 @@ import things from "../features/things/data/things.js";
 
 const thingsRouter = Router();
 
-app.get("/things", (_req, res) => {
+thingsRouter.get("/", (_req, res) => {
   res.status(200).json({ things });
 });
+
+export default thingsRouter;
