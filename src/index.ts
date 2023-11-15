@@ -1,11 +1,10 @@
 import morgan from "morgan";
 import app from "./app.js";
-import thingsRouter from "./router/thingsRouter.js";
+import { notFound } from "./middlewares/errorMiddlewares.js";
+import thingsRouter from "./features/things/router/thingsRouter.js";
 
 app.use(morgan("dev"));
 
 app.use("/things", thingsRouter);
 
-app.use((_req, res) => {
-  res.status(404).json({ error: "Endpoint not found" });
-});
+app.use(notFound);

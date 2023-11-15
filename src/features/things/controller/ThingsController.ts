@@ -11,12 +11,12 @@ class ThingsController {
   }
 
   public getThingsId(req: Request, res: Response) {
+    const { thingId } = req.params;
     try {
-      const thingId = parseInt(req.params.thingId, 10);
-
-      res.status(200).json({ thingId });
+      const thing = thingsRepository.getThingsId(+thingId);
+      res.status(200).json({ thing });
     } catch {
-      res.status(404).json();
+      res.status(404).json({ error: "Thing not found" });
     }
   }
 }
